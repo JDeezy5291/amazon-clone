@@ -1,16 +1,13 @@
 import React from "react";
-import reducer from "../../reducer";
 import { useStateValue } from "../../StateProvider";
 import "./Product.css";
 
 function Product({id, title, image, price, rating}) {
   // state of global store, dispatch, how to manipulate the data
-  const [basket, dispatch] = useStateValue()
-
-  console.log(basket)
+  const [{basket}, dispatch] = useStateValue()
 
   const addToBasket = () => {
-    // dispatch action into data layer
+    // dispatch item into data layer
     dispatch({
       type: 'ADD_TO_BASKET',
       item: {
@@ -38,11 +35,10 @@ function Product({id, title, image, price, rating}) {
       </div>
       <img
         src={image}
-        alt=""
       />
       <button onClick={addToBasket}>Add to Cart</button>
     </div>
-  );
+  )
 }
 
-export default Product;
+export default Product
