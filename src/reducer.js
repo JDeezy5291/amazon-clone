@@ -1,6 +1,7 @@
 // reducer is how we are able to dispatch the action into the data layer
 export const initialState = {
-    basket: []
+    basket: [],
+    user: null
 }
 
 // Selector
@@ -34,6 +35,13 @@ const reducer = (state, action) => {
                 ...state,
                 basket: newBasket
             }
+
+        case 'SET_USER':
+            return {
+                ...state,
+                user: action.user
+            }
+
         default:
             return state
     }
