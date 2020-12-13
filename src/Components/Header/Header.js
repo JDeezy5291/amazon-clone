@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Header.css'
 import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
@@ -15,45 +15,57 @@ function Header() {
             auth.signOut()
         }
     }
-    // let menu
-    // if (showMenu) {
-    //     menu = <div className="header__nav showMenu">
-    //     <Link to={!user && "/login"}>
-    //         <div 
-    //             onClick={handleAuthentication}
-    //             className="header__option ">
-    //             <span className="header__optionLineOne">
-    //                 Hello {user ? user?.email : 'guest'}
-    //             </span>
-    //             <span className="header__optionLineTwo">
-    //                 {user ? 'Sign Out' : 'Sign In'}
-    //             </span>
-    //         </div>
-    //     </Link>
-    //     <div className="header__option">
-    //         <span className="header__optionLineOne">
-    //             Returns
-    //         </span>
-    //         <span className="header__optionLineTwo">
-    //             & Orders
-    //         </span>
-    //     </div>
-    //     <div className="header__option">
-    //     <span className="header__optionLineOne">
-    //             Your
-    //         </span>
-    //         <span className="header__optionLineTwo">
-    //             Prime
-    //         </span>
-    //     </div>
-    //     <Link to="/checkout">
-    //         <div className="header__optionBasket">
-    //             <ShoppingBasketIcon />
-    //             <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
-    //         </div>
-    //     </Link>
-    // </div>
-    // }
+
+    
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 759);
+
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            const ismobile = window.innerWidth < 759;
+            if (ismobile !== isMobile) setIsMobile(ismobile);
+        }, false);
+    }, [isMobile]);
+    
+
+    let menu
+    if (showMenu) {
+        menu = <div className="header__navOptionsSubMenu">
+        <Link to={!user && "/login"}>
+            <div 
+                onClick={handleAuthentication}hideOnLargeScreen
+                className="header__option ">
+                <span className="header__optionLineOne">
+                    Hello, {user ? user?.email : 'guest'}
+                </span>
+                <span className="header__optionLineTwo">
+                    {user ? 'Sign Out' : 'Sign In'}
+                </span>
+            </div>
+        </Link>
+            <div className="header__option">
+                <span className="header__optionLineOne">
+                    Returns
+                </span>
+                <span className="header__optionLineTwo">
+                    & Orders
+                </span>
+            </div>
+            <div className="header__option">
+                <span className="header__optionLineOne">
+                    Your
+                </span>
+                <span className="header__optionLineTwo">
+                    Prime
+                </span>
+            </div>
+            <Link to="/checkout">
+                <div className="header__optionBasket">
+                    <ShoppingBasketIcon />
+                    <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
+                </div>
+            </Link>
+        </div>
+    }
 
     return (
         <div className="header">
@@ -72,46 +84,51 @@ function Header() {
             </div>
             <MenuIcon 
                 onClick={() => setShowMenu(!showMenu)}
-                className="menuIcon" 
+                className={`menuIcon`}
+                // ${showMenu ? "header__navOptionsToggle" : null} 
             />
-            {/* {menu} */}
-            <div className="header__nav showMenu">
-        <Link to={!user && "/login"}>
-            <div 
-                onClick={handleAuthentication}
-                className="header__option ">
-                <span className="header__optionLineOne">
-                    Hello {user ? user?.email : 'guest'}
-                </span>
-                <span className="header__optionLineTwo">
-                    {user ? 'Sign Out' : 'Sign In'}
-                </span>
+            {/* <div className={`header__nav ${showMenu ? "showMenu" : "hideMenu"}`}> */}
+            <div className={`header__nav ${isMobile && showMenu ? "showMenu" : "hideMenu"}`}>
+                {/* ${showMenu ? "showMenu" : null} */}
+            {/* <div className={`header__navOptions`}> */}
+            <div className={`header__nav ${isMobile && showMenu ? "header__OptionsOff" : "header__navOptions"}`}>                           
+            <Link to={!user && "/login"}>
+                <div 
+                    onClick={handleAuthentication}hideOnLargeScreen
+                    className="header__option ">
+                    <span className="header__optionLineOne">
+                        Hello, {user ? user?.email : 'guest'}
+                    </span>
+                    <span className="header__optionLineTwo">
+                        {user ? 'Sign Out' : 'Sign In'}
+                    </span>
+                </div>
+            </Link>
+                <div className="header__option">
+                    <span className="header__optionLineOne">
+                        Returns
+                    </span>
+                    <span className="header__optionLineTwo">
+                        & Orders
+                    </span>
+                </div>
+                <div className="header__option">
+                    <span className="header__optionLineOne">
+                        Your
+                    </span>
+                    <span className="header__optionLineTwo">
+                        Prime
+                    </span>
+                </div>
+                <Link to="/checkout">
+                    <div className="header__optionBasket">
+                        <ShoppingBasketIcon />
+                        <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
+                    </div>
+                </Link>
             </div>
-        </Link>
-        <div className="header__option">
-            <span className="header__optionLineOne">
-                Returns
-            </span>
-            <span className="header__optionLineTwo">
-                & Orders
-            </span>
-        </div>
-        <div className="header__option">
-        <span className="header__optionLineOne">
-                Your
-            </span>
-            <span className="header__optionLineTwo">
-                Prime
-            </span>
-        </div>
-        <Link to="/checkout">
-            <div className="header__optionBasket">
-                <ShoppingBasketIcon />
-                <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
+                {/* {menu} */}
             </div>
-        </Link>
-    </div>
-    }
         </div>
     )
 }

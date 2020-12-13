@@ -38,12 +38,12 @@
   font-weight: 800;
 }
 .header__optionBasket {
-    display: flex;
-    align-items: center;
-    color: #fff;
+  display: flex;
+  align-items: center;
+  color: #fff;
 }
 .header__basketCount {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 .header__nav {
   display: flex;
@@ -55,22 +55,78 @@
   margin: 0 10px;
   color: #fff;
 }
-/* .menuIcon {
-  color: #FFF;
-} */
-/* .showMenu {
-  position: fixed;
-  background-color: #FFF;
+.menuIcon {
+  color: #fff;
+  padding: 10px;
+}
+.header__navOptions {
+  display: flex;
+  justify-content: space-evenly;
+}
+.header__OptionsOff {
+  flex-direction: column;
+}
+.header__OptionsOff > a:nth-child(1) {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 60%;
+  width: 100%;
+  margin: 0;
+  background-color: #232f3e;
+  height: 50px;
+  align-items: center;
+  display: flex;
+  color: #fff;
+  text-decoration: none;
+  padding: 20px 0 5px;
+  border-bottom: 1px solid #d5dbdb;
+}
+.header__OptionsOff > .header__option:nth-child(2) {
+  color: #111;
+}
+.header__OptionsOff > a .header__optionLineOne,
+.header__OptionsOff > a .header__optionLineTwo {
+  font-weight: 700;
+  font-size: 16px;
+}
+.header__OptionsOff > a .header__optionLineTwo {
+  padding-left: 10px;
+}
+.header__OptionsOff > .header__option,
+.header__OptionsOff > a .header__option {
+  flex-direction: row;
+  padding: 15px 20px 15px 20px;
+}
+.showMenu {
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  width: 365px;
   height: 100%;
   z-index: 50;
-  display: flex;
-  flex-direction: column;
-} */
-/* @media screen and (max-width:759px) {
-  .header__nav {
-    
+}
+@media screen and (max-width: 759px) {
+  .header__navOptionsDisplay {
+    flex-direction: column;
   }
+  .header__navOptions {
+    display: none;
+  }
+}
+@media screen and (min-width: 759px) {
+  .menuIcon {
+    display: none !important;
+  }
+  .showMenu {
+    display: none;
+  }
+  .hideMenu {
+    display: flex !important;
+    justify-content: space-evenly;
+  }
+}
+
+/* .header__optionLinePadding {
+  margin: 0 10px 0 36px
 } */
