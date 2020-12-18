@@ -20,6 +20,7 @@
 .payment__title {
   flex: 0.2;
 }
+.payment__details,
 .payment__address,
 .payment__items {
   flex: 0.8;
