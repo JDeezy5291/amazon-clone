@@ -81,9 +81,9 @@
   padding: 20px 0 5px;
   border-bottom: 1px solid #d5dbdb;
 }
-.header__OptionsOff > .header__option:nth-child(2) {
+/* .header__OptionsOff > .header__option:nth-child(2) {
   color: #111;
-}
+} */
 .header__OptionsOff > a .header__optionLineOne,
 .header__OptionsOff > a .header__optionLineTwo {
   font-weight: 700;
@@ -105,6 +105,7 @@
   width: 365px;
   height: 100%;
   z-index: 50;
+  will-change: transform;
 }
 @media screen and (max-width: 759px) {
   .header__navOptionsDisplay {
@@ -112,6 +113,10 @@
   }
   .header__navOptions {
     display: none;
+  }
+  .header__OptionsOff > .header__option,
+  .header__optionBasket {
+    color: #111;
   }
 }
 @media screen and (min-width: 759px) {

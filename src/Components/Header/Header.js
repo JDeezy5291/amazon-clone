@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { useStateValue } from '../../StateProvider'
 import { auth } from '../../firebase'
 
-function Header() {
+function Header(props) {
     const [{basket, user}, dispatch] = useStateValue()
     const [showMenu, setShowMenu] = useState(false)
     const handleAuthentication = () => {
@@ -25,47 +25,7 @@ function Header() {
             if (ismobile !== isMobile) setIsMobile(ismobile);
         }, false);
     }, [isMobile]);
-    
 
-    let menu
-    if (showMenu) {
-        menu = <div className="header__navOptionsSubMenu">
-        <Link to={!user && "/login"}>
-            <div 
-                onClick={handleAuthentication}hideOnLargeScreen
-                className="header__option ">
-                <span className="header__optionLineOne">
-                    Hello, {user ? user?.email : 'guest'}
-                </span>
-                <span className="header__optionLineTwo">
-                    {user ? 'Sign Out' : 'Sign In'}
-                </span>
-            </div>
-        </Link>
-            <div className="header__option">
-                <span className="header__optionLineOne">
-                    Returns
-                </span>
-                <span className="header__optionLineTwo">
-                    & Orders
-                </span>
-            </div>
-            <div className="header__option">
-                <span className="header__optionLineOne">
-                    Your
-                </span>
-                <span className="header__optionLineTwo">
-                    Prime
-                </span>
-            </div>
-            <Link to="/checkout">
-                <div className="header__optionBasket">
-                    <ShoppingBasketIcon />
-                    <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
-                </div>
-            </Link>
-        </div>
-    }
 
     return (
         <div className="header">
@@ -88,13 +48,14 @@ function Header() {
                 // ${showMenu ? "header__navOptionsToggle" : null} 
             />
             {/* <div className={`header__nav ${showMenu ? "showMenu" : "hideMenu"}`}> */}
+            
             <div className={`header__nav ${isMobile && showMenu ? "showMenu" : "hideMenu"}`}>
                 {/* ${showMenu ? "showMenu" : null} */}
             {/* <div className={`header__navOptions`}> */}
             <div className={`header__nav ${isMobile && showMenu ? "header__OptionsOff" : "header__navOptions"}`}>                           
             <Link to={!user && "/login"}>
                 <div 
-                    onClick={handleAuthentication}hideOnLargeScreen
+                    onClick={handleAuthentication}
                     className="header__option ">
                     <span className="header__optionLineOne">
                         Hello, {user ? user?.email : 'guest'}
@@ -127,7 +88,6 @@ function Header() {
                     </div>
                 </Link>
             </div>
-                {/* {menu} */}
             </div>
         </div>
     )

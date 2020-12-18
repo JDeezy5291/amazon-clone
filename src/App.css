@@ -1,0 +1,8 @@
+.shadow {
+    background-color: rgba(0, 0, 0, .8);
+    position: absolute;
+      will-change: opacity;
+      height: 100%;
+      width: 100%;
+      -webkit-tap-highlight-color: transparent;
+  }

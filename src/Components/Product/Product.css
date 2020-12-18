@@ -32,5 +32,29 @@
   margin-top: 5px;
 }
 .product__rating {
-    display: flex;
+  display: flex;
+}
+
+/* Create four equal columns that sits next to each other */
+.product {
+  flex: 25%;
+  max-width: 100%;
+}
+@media (max-width: 430px) {
+  .product > img {
+    padding-top: 40px;
+  }
+}
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media (max-width: 800px) {
+  .product {
+    flex: 40%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media (max-width: 758px) {
+  .product {
+    flex: 100%;
+  }
 }

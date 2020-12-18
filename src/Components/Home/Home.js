@@ -8,56 +8,56 @@ function Home() {
             <div className="home__container">
                 <img  
                     className="home__image"
-                    src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
+                    src="https://images-na.ssl-images-amazon.com/images/G/01/digital/video/merch/2020/Other/RB-3195_SVOD_DiamondFallBack2/Amazon_GW_DesktopTallHero_3P_ENG_RB-3195_SVOD_DiamondFallback2_v2_1500x600._CB416678521_.jpg"
                     alt="home image"
                 />
                 <div className="home__row">
                     <Product 
                         id='12321341'
-                        title='The Lean Startup: How Constant Innovation Creates Radically Successful Business Paperback'
+                        title='The Dark Knight Trilogy (Special Edition) (Blu-ray)'
                         price={19.99}
-                        image='https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg'
-                        rating={4} 
+                        image='https://images-na.ssl-images-amazon.com/images/I/91S9ot3Z4lL._SX342_.jpg'
+                        rating={5} 
                     />
                     <Product 
                         id="49538094"
-                        title='Kenwood kMix Stand Mixer for Baking, Stylish Kitchen Mixer with K-beater, Dough Hook and Whisk, 5 Litre Glass Bowl'
-                        price={239.99}
-                        image='https://images-na.ssl-images-amazon.com/images/I/81O%2BGNdkzKL._AC_SX450_.jpg'
-                        rating={4} 
+                        title='Synergee Open 15kg and 20kg Black Phosphate and Chrome Olympic Barbell. Rated 1000lbs for Weightlifting, Powerlifting and Crossfit'
+                        price={249.95}
+                        image='https://images-na.ssl-images-amazon.com/images/I/71yvCwzZ8pL._AC_SL1500_.jpg'
+                        rating={5} 
                     />
                 </div>
                 <div className="home__row">
                     <Product
                         id="4903850"
-                        title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor"
-                        price={199.99}
-                        rating={3}
-                        image="https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL._AC_SX466_.jpg"
+                        title="Batman Arkham Collection (Standard Edition) (Xbox One)"
+                        price={42.98}
+                        rating={5}
+                        image="https://images-na.ssl-images-amazon.com/images/I/81j2zn6kQJL._SL1500_.jpg"
                     />
                     <Product
                         id="23445930"
-                        title="Amazon Echo (3rd generation) | Smart speaker with Alexa, Charcoal Fabric"
-                        price={98.99}
-                        rating={5}
-                        image="https://media.very.co.uk/i/very/P6LTG_SQ1_0000000071_CHARCOAL_SLf?$300x400_retinamobilex2$"
+                        title="Think and Grow Rich: The Landmark Bestseller Now Revised and Updated for the 21st Century"
+                        price={7.96}
+                        rating={4}
+                        image="https://images-na.ssl-images-amazon.com/images/I/61y04z8SKEL._SX349_BO1,204,203,200_.jpg"
                     />
                     <Product
                         id="3254354345"
-                        title="New Apple iPad Pro (12.9-inch, Wi-Fi, 128GB) - Silver (4th Generation)"
-                        price={598.99}
+                        title="Sunny Health & Fitness Power Zone Strength Rack Power Cage"
+                        price={369.00 }
                         rating={4}
-                        image="https://images-na.ssl-images-amazon.com/images/I/816ctt5WV5L._AC_SX385_.jpg"
+                        image="https://images-na.ssl-images-amazon.com/images/I/71PnLYIP8XL._AC_SL1500_.jpg"
                     />
                     </div>
 
                     <div className="home__row">
                     <Product
                         id="90829332"
-                        title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor - Super Ultra Wide Dual WQHD 5120 x 1440"
-                        price={1094.98}
+                        title="LG 38WK95C-W 38-Inch Class 21:9 Curved UltraWide WQHD+ Monitor with HDR 10"
+                        price={930.05}
                         rating={4}
-                        image="https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._AC_SX355_.jpg"
+                        image="https://images-na.ssl-images-amazon.com/images/I/41yMNBgMohL._AC_SL1143_.jpg"
                     />
                 </div>
             </div>

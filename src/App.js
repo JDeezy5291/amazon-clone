@@ -4,12 +4,23 @@ import Home from './Components/Home/Home'
 import Checkout from './Components/Checkout/Checkout';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './Components/Login/Login';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
 
 function App() {
   const [{}, dispatch] = useStateValue()
+  // const [showMenu, setShowMenu] = useState(false)
+  // const [isMobile, setIsMobile] = useState(window.innerWidth < 759);
+
+    // useEffect(() => {
+    //     window.addEventListener("resize", () => {
+    //         const ismobile = window.innerWidth < 759;
+    //         if (ismobile !== isMobile) setIsMobile(ismobile);
+    //     }, false);
+    // }, [isMobile]);
+
+    
 
   useEffect(() => {
     //will only run once when app component loads
@@ -34,8 +45,12 @@ function App() {
     })
   }, [])
 
+  
+  
+
   return (
     <Router>
+      {/* <div className={`app ${isMobile && showMenu ? "shadow" : null}`}> */}
       <div className="app">
         <Switch>
           <Route path="/login">
