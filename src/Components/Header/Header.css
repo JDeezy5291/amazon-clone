@@ -30,14 +30,18 @@
   height: 22px !important;
   background-color: #cd9042;
 }
+.header__address > .header__optionLineOne {
+  color: #ccc;
+}
 .header__optionLineOne {
-  font-size: 10px;
+  font-size: 12px;
 }
 .header__optionLineTwo {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
 }
-.header__optionBasket {
+.header__optionBasket,
+.header__optionPlace {
   display: flex;
   align-items: center;
   color: #fff;
@@ -49,11 +53,17 @@
   display: flex;
   justify-content: space-evenly;
 }
-.header__option {
+.header__option,
+.header__address {
   display: flex;
   flex-direction: column;
-  margin: 0 10px;
   color: #fff;
+}
+.header__option {
+  margin: 0 10px;
+}
+.header__address {
+  margin: 10px 10px 10px 0;
 }
 .menuIcon {
   color: #fff;
@@ -111,7 +121,8 @@
   .header__navOptionsDisplay {
     flex-direction: column;
   }
-  .header__navOptions {
+  .header__navOptions,
+  .header__address {
     display: none;
   }
   .header__OptionsOff > .header__option,

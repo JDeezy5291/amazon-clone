@@ -3,6 +3,7 @@ import './Header.css'
 import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 import MenuIcon from '@material-ui/icons/Menu';
+import PlaceIcon from '@material-ui/icons/Place';
 import { Link } from 'react-router-dom'
 import { useStateValue } from '../../StateProvider'
 import { auth } from '../../firebase'
@@ -15,7 +16,6 @@ function Header(props) {
             auth.signOut()
         }
     }
-
     
     const [isMobile, setIsMobile] = useState(window.innerWidth < 759);
 
@@ -35,6 +35,16 @@ function Header(props) {
                     alt="amazon logo"
                 />
             </Link>
+            <PlaceIcon className="header__optionPlace" />
+            <div
+                className="header__address">
+                <span className="header__optionLineOne">
+                    {user ? 'Deliver to ' + user?.email : 'Hello, guest'}
+                </span>
+                <span className="header__optionLineTwo">
+                    {user ? 'Sometown 18204' : 'Select your address'}
+                </span>
+            </div>
             <div className="header__search">
                 <input 
                     className="header__searchInput"

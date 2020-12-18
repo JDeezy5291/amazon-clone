@@ -2,6 +2,7 @@ import './App.css';
 import Header from './Components/Header/Header'
 import Home from './Components/Home/Home'
 import Checkout from './Components/Checkout/Checkout';
+import Payment from './Components/Payment/Payment';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './Components/Login/Login';
 import { useEffect, useState } from 'react';
@@ -59,6 +60,10 @@ function App() {
           <Route path="/checkout">
             <Header />
             <Checkout />
+          </Route>
+          <Route path="/payment">
+            <Header />
+            <Payment />
           </Route>
           {/* Default Route. must be at bottom */}
           <Route path="/">
