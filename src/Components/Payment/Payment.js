@@ -1,29 +1,63 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStateValue } from '../../StateProvider'
 import BasketItem from '../BasketItem/BasketItem'
 import './Payment.css'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import CurrencyFormat from 'react-currency-format'
 import { getBasketTotal } from '../../reducer'
+import axios from '../../axios'
 
 function Payment() {
     const [{basket, user}, dispatch] = useStateValue()
+    const history = useHistory()
 
     const [error, setError] = useState(null)
     const [disabled, setDisabled] = useState(true)
+    const [succeeded, setSucceeded] = useState(false)
+    const [processing, setProcessing] = useState("")
+    const [clientSecret, setClientSecret] = useState(true)
 
     const stripe = useStripe()
     const elements = useElements()
 
-    const handleSubmit = e => {
-        
+    const handleSubmit = async (e) => {
+        // prevent refreshing
+        e.preventDefault()
+        // prevent user from clicking buy now button multiple times
+        setProcessing(true)
+
+        const payload = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: elements.getElement(CardElement)
+            }
+        }).then(({paymentIntent}) => {
+            // paymentIntent = payment confirmation
+            setSucceeded(true)
+            setError(null)
+            setProcessing(false)
+
+            history.replace('/orders')
+        })
     }
     const handleChange = e => {
         // listen for changes in CardElement
         setDisabled(e.empty)
         setError(e.error ? e.error.message : "")
     }
+
+    useEffect(() => {
+        const getClientSecret = async () => {
+            const response = await axios({
+                method: 'post',
+                url: `/payments/create?total=${getBasketTotal(basket) * 100}`
+            })
+            setClientSecret(response.data.clientSecret)
+        }
+        getClientSecret()
+    }, [basket])
+
+    console.log('THE CLIENT SECRET >>>>', clientSecret)
     
     return (
         <div className="payment">
@@ -79,6 +113,8 @@ function Payment() {
                                     <span>{processing ? <p>Processing</p> : "Buy Now "}</span>
                                 </button>
                             </div>
+                            {/* Errors  */}
+                            {error && <div>{error}</div>}
                         </form>
                     </div>
                 </div>
