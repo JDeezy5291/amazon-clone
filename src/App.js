@@ -16,8 +16,21 @@ const promise = loadStripe('pk_test_51Hzq6DDgCLwFmBmIOxjlTlCZlRm6TvKqtB5lrM8Lsv9
 
 function App() {
   const [{}, dispatch] = useStateValue()
-  // const [showMenu, setShowMenu] = useState(false)
-  // const [isMobile, setIsMobile] = useState(window.innerWidth < 759);
+  const [showMenu, setShowMenu] = useState(false)
+
+// when .showmenu is toggled on, add .TEST to #app 
+useEffect(() => {
+  const appElement = document.querySelector('#app')
+  const headerNavElement = document.querySelector('.header__nav')
+
+  if (headerNavElement.classList.contains('hideMenu')) {
+    appElement.classList.add('TEST')
+  } else {
+    appElement.classList.remove('TEST')
+  }
+}, [])
+
+  
 
     // useEffect(() => {
     //     window.addEventListener("resize", () => {
@@ -54,7 +67,7 @@ function App() {
   return (
     <Router>
       {/* <div className={`app ${isMobile && showMenu ? "shadow" : null}`}> */}
-      <div className="app">
+      <div className="app" id="app">
         <Switch>
           <Route path="/orders">
             <Header />

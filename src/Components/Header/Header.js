@@ -17,11 +17,11 @@ function Header(props) {
         }
     }
     
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 759);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 930);
 
     useEffect(() => {
         window.addEventListener("resize", () => {
-            const ismobile = window.innerWidth < 759;
+            const ismobile = window.innerWidth < 930;
             if (ismobile !== isMobile) setIsMobile(ismobile);
         }, false);
     }, [isMobile]);
@@ -35,15 +35,17 @@ function Header(props) {
                     alt="amazon logo"
                 />
             </Link>
-            <PlaceIcon className="header__optionPlace" />
             <div
                 className="header__address">
-                <span className="header__optionLineOne">
-                    {user ? 'Deliver to ' + user?.email : 'Hello, guest'}
-                </span>
-                <span className="header__optionLineTwo">
-                    {user ? 'Sometown 18204' : 'Select your address'}
-                </span>
+                <PlaceIcon className="header__optionPlace" />
+                <div className="header__addressOptions">
+                    <span className="header__optionLineOne">
+                        {user ? 'Deliver to ' + user?.email : 'Hello, guest'}
+                    </span>
+                    <span className="header__optionLineTwo">
+                        {user ? 'Sometown 18204' : 'Select your address'}
+                    </span>
+                </div>
             </div>
             <div className="header__search">
                 <input 
@@ -66,7 +68,7 @@ function Header(props) {
             <Link to={!user && "/login"}>
                 <div 
                     onClick={handleAuthentication}
-                    className="header__option ">
+                    className="header__option">
                     <span className="header__optionLineOne">
                         Hello, {user ? user?.email : 'guest'}
                     </span>
