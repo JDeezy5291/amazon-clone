@@ -10,6 +10,7 @@ import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
+import Orders from './Components/Orders/Orders';
 
 const promise = loadStripe('pk_test_51Hzq6DDgCLwFmBmIOxjlTlCZlRm6TvKqtB5lrM8Lsv9KACIfTxJSj0Um64MTFZUkTAm48TACdX0ILkhzAaraZEtP00smkLuoQr')
 
@@ -50,14 +51,15 @@ function App() {
     })
   }, [])
 
-  
-  
-
   return (
     <Router>
       {/* <div className={`app ${isMobile && showMenu ? "shadow" : null}`}> */}
       <div className="app">
         <Switch>
+          <Route path="/orders">
+            <Header />
+            <Orders />
+          </Route>
           <Route path="/login">
             <Login />
           </Route>
